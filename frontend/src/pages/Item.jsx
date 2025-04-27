@@ -17,7 +17,7 @@ const Item = () => {
   }, []);
 
   useEffect(() => {
-    fetch(`http://localhost:8080/product/${id}`)
+    fetch(`${import.meta.env.VITE_BACKEND_URL}product/${id}`)
       .then((responce) => {
         return responce.json();
       })
@@ -27,7 +27,7 @@ const Item = () => {
   }, [id]);
 
   let handleclick = async () => {
-    let responce = await fetch(`http://localhost:8080/product/${arr._id}`, {
+    let responce = await fetch(`${import.meta.env.VITE_BACKEND_URL}product/${arr._id}`, {
       method: "DELETE",
     });
     let result = await responce.json();
@@ -38,7 +38,7 @@ const Item = () => {
   
   useEffect(() => {
     if(user?.email){
-      fetch(`http://localhost:8080/user?email=${user.email}`)
+      fetch(`${import.meta.env.VITE_BACKEND_URL}user?email=${user.email}`)
       .then((responce) => {
         return responce.json();
       })
@@ -51,7 +51,7 @@ const Item = () => {
 
   useEffect(() => {
     if(user?.email){
-    fetch(`http://localhost:8080/isowner?email=${user.email}`)
+    fetch(`${import.meta.env.VITE_BACKEND_URL}isowner?email=${user.email}`)
     .then((responce)=>{
       return responce.json();
     })
@@ -67,16 +67,24 @@ const Item = () => {
 
   return (
     <>
-      <div className=" pt-15">
-        <div className="flex px-30 pt-20  ">
-          <div className=" border overflow-y-scroll w-full border-slate-200  px-10">
-            <h1 className="font-semibold text-3xl pb-10  ">
+      <div className=" pt-15 min-lg:px-20 ">
+        <div className="flex min-xl:px-30 pt-10 min-md:px-10 px-2   max-lg:flex-col ">
+          <div className=" border overflow-y-scroll w-full max-sm:px-0 border-slate-200  px-10">
+            <h1 className="font-semibold  text-2xl  pb-10 pt-4 ">
               Most Affortable Packages 
             </h1>
             {/* cart data */}
             <div className="border-t border-b border-slate-400  shadow-2xl shadow-slate-300 ">
-              <div className="py-3 flex justify-between ps-5">
-                <div className="w-1/2 ">
+              <div className="py-3 flex justify-between ps-5 max-md:flex-col">
+              <div className=" min-lg:w-50 w-2/3 min-md:w-1/3 self-center rounded-xl  h-full flex flex-col justify-center items-center  ">
+                  <img
+                    src={arr.image}
+                    alt=""
+                    className="w-full h-45 border border-slate-500 rounded-xl"
+                  />
+                  
+                </div>
+                <div className="min-md:w-1/2 max-md:pt-4 ">
                   <h2 className="font-semibold text-2xl pb-2">{arr.title}</h2>
                   <p className="border-b border-dashed w-1/3 mb-2 text-md pb-1">
                     4.81 208k reviews{" "}
@@ -105,19 +113,12 @@ const Item = () => {
                     </button>
                   </div>}
                 </div>
-                <div className=" w-50 rounded-xl  h-full flex flex-col justify-center items-center  ">
-                  <img
-                    src={arr.image}
-                    alt=""
-                    className="w-full h-45 border border-slate-500 rounded-xl"
-                  />
-                  
-                </div>
+               
               </div>
             </div>
 
             {/* how it work */}
-            <div className="px-10">
+            <div className="min-md:px-10 px-4">
               <h1 className="font-bold text-3xl py-4 text-center ">
                 How it works
               </h1>
@@ -150,33 +151,35 @@ const Item = () => {
               </div>
             </div>
             {/* note  */}
-            <div className="px-10">
+            <div className="min-md:px-10 px-4">
               <h1 className="font-semibold py-2 text-xl">Please note</h1>
               <p>the repair or serive qoute after the check-up </p>
               <p>visitation charge will be ardjust in the final qoute</p>
             </div>
+
+
             {/* we service all brand */}
             <div>
               <h1 className="font-bold text-3xl pt-8 pb-6  text-center ">
                 We service all brand
               </h1>
               <div className="flex flex-col justify-center items-center">
-                <div className="flex gap-5">
-                  <div className="bg-zinc-300 w-40 mb-6 py-6 rounded-2xl  flex justify-center items-center">
+                <div className="flex gap-5 max-sm:flex-col">
+                  <div className="bg-zinc-300 min-sm:w-40 max-sm:h-40 w-70 mb-6 py-6 rounded-2xl  flex justify-center items-center">
                     <img
                       src="/allbrand/godrejimg.png"
                       alt="this is an image"
                       className="w-20 h-10"
                     />
                   </div>
-                  <div className="bg-zinc-300 w-40 mb-6 py-6 rounded-2xl  flex justify-center items-center">
+                  <div className="bg-zinc-300 min-sm:w-40 max-sm:h-40 w-70 mb-6 py-6 rounded-2xl  flex justify-center items-center">
                     <img
                       src="/allbrand/haierimg.png"
                       alt=""
                       className="w-20 h-10"
                     />
                   </div>
-                  <div className="bg-zinc-300 w-40 mb-6 py-6 rounded-2xl  flex justify-center items-center">
+                  <div className="bg-zinc-300 min-sm:w-40 max-sm:h-40 w-70 mb-6 py-6 rounded-2xl  flex justify-center items-center">
                     <img
                       src="/allbrand/ifbimg.png"
                       alt=""
@@ -184,22 +187,22 @@ const Item = () => {
                     />
                   </div>
                 </div>
-                <div className="flex gap-5">
-                  <div className="bg-zinc-300 w-40 mb-6 py-6 rounded-2xl  flex justify-center items-center">
+                <div className="flex gap-5 max-sm:flex-col">
+                  <div className="bg-zinc-300 min-sm:w-40 max-sm:h-40 w-70 mb-6 py-6 rounded-2xl  flex justify-center items-center">
                     <img
                       src="/allbrand/kentimg.png"
                       alt=""
                       className="w-20 h-10"
                     />
                   </div>
-                  <div className="bg-zinc-300 w-40 mb-6 py-6 rounded-2xl  flex justify-center items-center">
+                  <div className="bg-zinc-300 min-sm:w-40 max-sm:h-40 w-70 mb-6 py-6 rounded-2xl  flex justify-center items-center">
                     <img
                       src="/allbrand/lgimg.png"
                       alt=""
                       className="w-20 h-10"
                     />
                   </div>
-                  <div className="bg-zinc-300 w-40 mb-6 py-6 rounded-2xl  flex justify-center items-center">
+                  <div className="bg-zinc-300 min-sm:w-40 max-sm:h-40 w-70 mb-6 py-6 rounded-2xl  flex justify-center items-center">
                     <img
                       src="/allbrand/livepureimg.png"
                       alt=""
@@ -207,39 +210,32 @@ const Item = () => {
                     />
                   </div>
                 </div>
-                <div className="flex gap-5">
-                  <div className="bg-zinc-300 w-40 mb-6 py-6 rounded-2xl  flex justify-center items-center">
+                <div className="flex gap-5 max-sm:flex-col">
+                  <div className="bg-zinc-300 min-sm:w-40 max-sm:h-40 w-70 mb-6 py-6 rounded-2xl  flex justify-center items-center">
                     <img
                       src="/allbrand/samsungimg.png"
                       alt=""
                       className="w-20 h-10"
                     />
                   </div>
-                  <div className="bg-zinc-300 w-40 mb-6 py-6 rounded-2xl  flex justify-center items-center">
+                  <div className="bg-zinc-300 min-sm:w-40 max-sm:h-40 w-70 mb-6 py-6 rounded-2xl  flex justify-center items-center">
                     <img
                       src="/allbrand/voltasimg.png"
                       alt=""
                       className="w-20 h-10"
                     />
                   </div>
-                  <div className="bg-zinc-300 w-40 mb-6 py-6 rounded-2xl  flex justify-center items-center">
+                  <div className="bg-zinc-300 min-sm:w-40 max-sm:h-40 w-70 mb-6 py-6 rounded-2xl  flex justify-center items-center">
                     <p>&more</p>
                   </div>
                 </div>
               </div>
             </div>
           </div>
-          <div className="w-1/2 border border-slate-200  flex flex-col items-center">
-            {/* <div className="border bg-slate-100 border-slate-300 rounded-2xl  w-[80%] mt-10 py-5 flex flex-col justify-center items-center">
-              <lord-icon
-                src="https://cdn.lordicon.com/pmawqxvu.json"
-                trigger="hover"
-                colors="primary:#3080e8,secondary:#646e78,tertiary:#3a3347"
-                className="w-25 h-25"
-              ></lord-icon>
-              <p>No item in your cart</p>
-            </div> */}
-            <div className="mt-6 border bg-slate-100 border-slate-300 rounded-2xl   py-6 w-[97%] flex justify-center items-center gap-2">
+
+          
+          <div className=" border  border-slate-200 w-[90%] mb-10 min-md:mx-10 mx-2 flex flex-col items-center self-center">
+            <div className="mt-6 border bg-slate-100 border-slate-300 rounded-2xl py-4 max-sm:w-[90%] w-[70%] flex justify-center items-center gap-2">
               <lord-icon
                 src="https://cdn.lordicon.com/jxynfsur.json"
                 trigger="hover"
@@ -253,7 +249,7 @@ const Item = () => {
               <Review id={arr._id}></Review>
             </div>
             {/* all reviews */}
-            <div className="  border h-150 overflow-y-auto border-slate-200 bg-slate-100 w-[95%] pb-10 py-4 mt-4 rounded-2xl ">
+            <div className="  border h-150 overflow-y-auto border-slate-200 bg-slate-100 max-sm:w-[90%] min-xl:w-[70%] w-[95%] pb-10 py-4 mt-4 rounded-2xl ">
               <h1 className="ps-10 font-semibold text-2xl">All reviews</h1>
               {arr?.reviewid && arr.reviewid.length > 0 ? (
                 arr.reviewid.map((d, index) => (

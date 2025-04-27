@@ -38,7 +38,7 @@ let handleSubmit = (e)=>{
         transition={Bounce}
       />
       <div className="py-20  flex justify-center  ">
-        <div className="border py-4 border-slate-300 rounded-2xl shadow-2xl h-fit shadow-slate-500 w-1/2 ">
+        <div className="border py-4 border-slate-300 rounded-2xl shadow-2xl h-fit shadow-slate-500  w-[90%] min-md:w-1/2">
           <h1 className="font-bold text-3xl text-center pt-2 ps-10">
            Contact Us
           </h1>
@@ -85,7 +85,7 @@ let handleSubmit = (e)=>{
               <div className="w-full flex justify-center">
                 <button
                   type="submit"
-                  class="text-white bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2 w-1/2"
+                  class="text-white bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2 w-1/2 max-sm:mt-10"
                 >
                   Submit
                 </button>

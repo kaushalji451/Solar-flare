@@ -28,7 +28,7 @@ const Userdata = () => {
 
   let handleSubmit = async (e) => {
     e.preventDefault();
-    let responce = await fetch("http://localhost:8080/user", {
+    let responce = await fetch(`${import.meta.env.VITE_BACKEND_URL}user`, {
       method: "post",
       headers: {
         "Content-Type": "application/json",

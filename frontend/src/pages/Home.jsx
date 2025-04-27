@@ -4,6 +4,7 @@ import Templete2 from "../homecomponents/Templete2";
 import Templete3 from "../homecomponents/Templete3";
 import Templete4 from "../homecomponents/Templete4";
 import Templete5 from "../homecomponents/Templete5";
+
 const Home = () => {
   return (
     <>

@@ -10,7 +10,7 @@ const Navbar = () => {
   useEffect(() => {
     let checkuser = async () => {
       if (user) {
-        let responce = await fetch("http://localhost:8080/user/check", {
+        let responce = await fetch(`${import.meta.env.VITE_BACKEND_URL}user/check`, {
           method: "post",
           headers: {
             "Content-Type": "application/json",
@@ -22,7 +22,7 @@ const Navbar = () => {
       }
       // is owner check
       if (user?.email) {
-        fetch(`http://localhost:8080/isowner?email=${user.email}`)
+        fetch(`${import.meta.env.VITE_BACKEND_URL}isowner?email=${user.email}`)
           .then((responce) => {
             return responce.json();
           })

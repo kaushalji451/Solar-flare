@@ -21,7 +21,7 @@ const Product = () => {
 
   // gettting data
   useEffect(() => {
-    fetch("http://localhost:8080/")
+    fetch(`${import.meta.env.VITE_BACKEND_URL}`)
       .then((responce) => {
         return responce.json();
       })
@@ -34,7 +34,7 @@ const Product = () => {
   // getting user 
   useEffect(() => {
     if(user){
-     fetch(`http://localhost:8080/user?email=${user.email}`)
+     fetch(`${import.meta.env.VITE_BACKEND_URL}user?email=${user.email}`)
      .then((responce) => {
        return responce.json();
      })
@@ -47,7 +47,7 @@ const Product = () => {
 
   // add to cart
   let handleClick = async (id) => {
-    let responce = await fetch(`http://localhost:8080/product/cart/${id}`, {
+    let responce = await fetch(`${import.meta.env.VITE_BACKEND_URL}product/cart/${id}`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -64,7 +64,7 @@ const Product = () => {
   useEffect(() => {
     // cart items
     if(aruser){
-    fetch(`http://localhost:8080/cart/${aruser._id}`)
+    fetch(`${import.meta.env.VITE_BACKEND_URL}cart/${aruser._id}`)
         .then((responce) => {
           return responce.json();
         })
@@ -80,7 +80,7 @@ const Product = () => {
 
   // cart item delete
   let handleDelete = async (id) => {
-    let responce = await fetch(`http://localhost:8080/cart/${id}`, {
+    let responce = await fetch(`${import.meta.env.VITE_BACKEND_URL}cart/${id}`, {
       method: "DELETE",
     });
     let result = await responce.json();
@@ -107,7 +107,7 @@ const Product = () => {
       />
       <div className=" py-15 ">
         <div className="flex min-lg:px-20 py-4 h[80vh]">
-          <div className=" border overflow-y-scroll w-2/3  border-slate-200 min-md:h-[90vh]  px-10">
+          <div className=" border overflow-y-scroll   border-slate-200 min-md:h-[90vh]  px-10">
             <h1 className="font-semibold text-3xl pb-10  ">
               Most Affortable Packages
             </h1>

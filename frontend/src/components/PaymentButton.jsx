@@ -12,7 +12,7 @@ const navigate = useNavigate();
  // getting user 
   useEffect(() => {
     if(user){
-     fetch(`http://localhost:8080/user?email=${user.email}`)
+     fetch(`${import.meta.env.VITE_BACKEND_URL}user?email=${user.email}`)
      .then((responce) => {
        return responce.json();
      })
@@ -36,7 +36,7 @@ const navigate = useNavigate();
 
  //order for that  
  let OrdersCalling =async(response)=>{
-  let responce = await fetch(`http://localhost:8080/orders?userId=${aruser._id}`);
+  let responce = await fetch(`${import.meta.env.VITE_BACKEND_URL}orders?userId=${aruser._id}`);
   let result = await responce.json();
   console.log("this is your result ",result);
   navigate("/orders",{state : { 
@@ -65,7 +65,7 @@ const navigate = useNavigate();
       handler: function (response) {
         toast("payment successful"); 
         OrdersCalling(response);
-        console.log("this is respoce",esponse);
+        console.log("this is respoce",response);
       },
       prefill: {
         name: aruser.name,

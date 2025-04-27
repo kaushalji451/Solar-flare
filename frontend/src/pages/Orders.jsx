@@ -18,7 +18,7 @@ const Orders = () => {
     const handleUser = async () => {
       if (user) {
         let responce = await fetch(
-          ` http://localhost:8080/user?email=${user.email}`
+          ` ${import.meta.env.VITE_BACKEND_URL}user?email=${user.email}`
         );
         let result = await responce.json();
         setaruser(result);
@@ -35,7 +35,7 @@ const Orders = () => {
       lastPostedRef.current = { order, response };
       const handleData = async () => {
         try {
-          await fetch("http://localhost:8080/order", {
+          await fetch(`${import.meta.env.VITE_BACKEND_URL}order`, {
             method: "POST",
             headers: {
               "Content-Type": "application/json",
@@ -55,7 +55,7 @@ const Orders = () => {
     if (aruser != null) {
       let handledata = async () => {
         let responce = await fetch(
-          ` http://localhost:8080/allOrder/${aruser[0]._id}`
+          ` ${import.meta.env.VITE_BACKEND_URL}allOrder/${aruser[0]._id}`
         );
         let data = await responce.json();
         setOrders(data);

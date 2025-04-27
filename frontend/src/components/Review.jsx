@@ -14,7 +14,7 @@ const Review = (params) => {
   let handleSubmit = async (e) => {
     try {
       e.preventDefault();
-      let responce = await fetch(`http://localhost:8080/product/review/${params.id}`, {
+      let responce = await fetch(`${import.meta.env.VITE_BACKEND_URL}product/review/${params.id}`, {
         method: "post",
         headers: {
           "Content-Type": "application/json",

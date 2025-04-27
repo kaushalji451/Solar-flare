@@ -14,7 +14,7 @@ const Editproduct = () => {
   }, []);
 
   useEffect(() => {
-    fetch(`http://localhost:8080/product/${id}`)
+    fetch(`${import.meta.env.VITE_BACKEND_URL}product/${id}`)
       .then((responce) => {
         return responce.json();
       })
@@ -28,7 +28,7 @@ const Editproduct = () => {
   };
   let handleSubmit = async (e) => {
     e.preventDefault();
-    let responce = await fetch(`http://localhost:8080/product/edit/${formdata._id}`, {
+    let responce = await fetch(`${import.meta.env.VITE_BACKEND_URL}product/edit/${formdata._id}`, {
       method: "put",
       headers: {
         "Content-Type": "application/json",
@@ -59,13 +59,13 @@ const Editproduct = () => {
         transition={Bounce}
       />
       <div className="py-20  flex justify-center">
-        <div className="border py-4 border-slate-300 rounded-2xl shadow-2xl shadow-slate-500 w-1/2 ">
-          <h1 className="font-bold text-3xl text-center pt-2 ps-10">
+        <div className="border py-4 w-[80%] min-lg:w-1/2 border-slate-300 rounded-2xl shadow-2xl shadow-slate-500  ">
+          <h1 className="font-bold text-3xl text-center pt-2 min-md:ps-10">
             Edit your service
           </h1>
 
-          <form onSubmit={handleSubmit}>
-            <div className="flex flex-col w-[80%] gap-2 mx-auto pb-10 pt-5">
+          <form onSubmit={handleSubmit} className="flex justify-center">
+            <div className="flex flex-col w-[90%]   gap-2  pb-10 pt-5">
               {/* title */}
               <label htmlFor="title" className="font-semibold">
                 Title
@@ -93,7 +93,7 @@ const Editproduct = () => {
                 value={formdata.image}
               />
 
-              <div className="flex gap-3">
+              <div className="flex gap-3 max-sm:flex-col">
                 {/* old price */}
                 <div className="flex flex-col w-full gap-1">
                   <label htmlFor="oldprice" className="font-semibold">
@@ -125,7 +125,7 @@ const Editproduct = () => {
                   />
                 </div>
               </div>
-              <div className="pt-2 flex justify-between gap-3">
+              <div className="pt-2 flex justify-between max-sm:flex-col gap-3">
                 {/* categery  */}
                 <select
                   name="categery"
@@ -170,7 +170,7 @@ const Editproduct = () => {
                 value={formdata.description}
               ></textarea>
               {/* submit button */}
-              <div className="w-full flex justify-center">
+              <div className="w-full flex justify-center max-sm:pt-6">
                 <button
                   type="submit"
                   class="text-white bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2 w-1/2"
