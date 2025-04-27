@@ -105,9 +105,9 @@ const Product = () => {
         theme="light"
         transition={Bounce}
       />
-      <div className=" pt-15">
-        <div className="flex px-20 pt-20   ">
-          <div className=" border overflow-y-scroll w-full border-slate-200 h-[80vh]  px-10">
+      <div className=" py-15 ">
+        <div className="flex min-lg:px-20 py-4 h[80vh]">
+          <div className=" border overflow-y-scroll w-2/3  border-slate-200 min-md:h-[90vh]  px-10">
             <h1 className="font-semibold text-3xl pb-10  ">
               Most Affortable Packages
             </h1>
@@ -116,9 +116,22 @@ const Product = () => {
             {arr
               .filter((item) => item.categery === categery)
               .map((data) => (
-                <div className="border-t border-b border-slate-400  ">
-                  <div className="py-3 flex justify-between">
-                    <div className="w-1/2 ">
+                <div className="border-t border-b  border-slate-400  ">
+                  <div className="py-3 flex justify-around max-sm:flex-col">
+                  <div className=" w-40  rounded-xl  h-40 flex flex-col justify-center items-center  ">
+                      <img
+                        src={data.image}
+                        alt=""
+                        className="w-full h-37 border border-slate-500 rounded-xl"
+                      />
+                      <button
+                        className="bg-slate-300 border border-slate-500 px-4 py-1 rounded-sm w-1/2 -mt-4"
+                        onClick={() => handleClick(data._id)}
+                      >
+                        Add
+                      </button>
+                    </div>
+                    <div className="min-sm:w-1/2 max-sm:pt-6 ">
                       <h2 className="font-semibold text-2xl pb-2">
                         {data.title}
                       </h2>
@@ -138,26 +151,14 @@ const Product = () => {
                         </Link>
                       </button>
                     </div>
-                    <div className=" w-40 rounded-xl  h-40 flex flex-col justify-center items-center  ">
-                      <img
-                        src={data.image}
-                        alt=""
-                        className="w-full h-37 border border-slate-500 rounded-xl"
-                      />
-                      <button
-                        className="bg-slate-300 border border-slate-500 px-4 py-1 rounded-sm w-1/2 -mt-4"
-                        onClick={() => handleClick(data._id)}
-                      >
-                        Add
-                      </button>
-                    </div>
+                    
                   </div>
                 </div>
               ))}
           </div>
-          <div className="w-1/2 border pb-8   border-slate-200  flex flex-col items-center">
+          <div className="w-1/2  border pb-8 md:block hidden border-slate-200  flex flex-col ps-25  ">
             {/* cart div */}
-            <div className="border border-slate-300 rounded-2xl w-[80%] mt-10 py-5 flex flex-col justify-center items-center">
+            <div className="border border-slate-300 rounded-2xl min-lg:w-[80%] w-[95%] mt-10 py-5 flex flex-col justify-center items-center">
               {totalnewPrice === 0 && (
                 <div>
                   <lord-icon
@@ -172,10 +173,10 @@ const Product = () => {
 
               {/* cart */}
               {totalnewPrice > 0 && (
-                <div className="flex flex-col gap-4 w-full px-1 h-full ">
+                <div className="flex flex-col gap-4 px-10 w-full  h-full ">
                   <h1 className="font-semibold text-">Cart</h1>
                   {cart.map((item) => (
-                    <div className="border border-slate-400 py-2 flex items-center justify-between px-4 rounded-2xl">
+                    <div className="border  border-slate-400 py-2 flex items-center justify-between px-4 rounded-2xl">
                       <div className="w-1/3">{item.title} </div>
                       <div className="w-1/3 flex justify-around rounded-2xl bg-slate-200 ">
                         <button

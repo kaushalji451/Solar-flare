@@ -48,7 +48,7 @@ const Signin = () => {
         theme="light"
         transition={Bounce}
       />
-      <div className="flex gap-14">
+      <div className="flex gap-14 pt-15">
         <div className="flex justify-center py-10 w-1/2 ">
           <div className=" border h-[89vh]  rounded-2xl  border-slate-300 shadow-2xl shadow-slate-500 w-full mx-10 lg:mx-25">
             <h2 className="text-4xl font-bold text-center pt-8">Login</h2>

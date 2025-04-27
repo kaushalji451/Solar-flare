@@ -30,7 +30,6 @@ const Temp5 = () => {
                 </div>
                 <div className="ps-4">
                   <h1>{data.title}</h1>
-
                   <p className="flex items-center">
                     <lord-icon
                       src="https://cdn.lordicon.com/uihwbzln.json"

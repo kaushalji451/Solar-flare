@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 const Templete3 = () => {
   return (
     <div>
-       <div className=" pt-10 px-20">
+       <div className=" pt-10 min-lg:mx-20 mx-6">
           <h1 className="font-semibold text-3xl">Most Popular Services</h1>
           <div className="flex gap-5 overflow-auto pt-5 ">
             <Link to={`/product/?categery=Ac`}>

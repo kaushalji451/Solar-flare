@@ -3,18 +3,18 @@ import { Link } from "react-router-dom";
 const Templete1 = () => {
   return (
     <div>
-      <div className="flex pb-20 border-b">
-        <div className="w-1/2 flex justify-center">
-          <div className=" w-[80%]  flex flex-col items-center">
-            <h1 className="font-semibold text-3xl w-[80%] py-5">
+      <div className="flex pb-20 justify-center border-b">
+        <div className="min-md:w-1/2  flex justify-center">
+          <div className=" min-md:w-[80  flex flex-col items-center">
+            <h1 className="font-semibold text-3xl min:md:w-[80%] px-5 py-5">
               Convenient home services right to your doorstep.
             </h1>
             <div className="border rounded-2xl border-slate-400 shadow-2xl shadow-slate-400 w-[90%] pt-2 px-6 flex flex-col gap-3">
               <p className="text-xl font-semibold">Whats you loking for?</p>
               {/* ac and frige */}
-              <div className=" flex gap-5 justify-center">
+              <div className=" flex gap-5 justify-center max-sm:flex-col items-center">
                 <Link to={`/product/?categery=Ac`}>
-                  <div className=" px-3 py-8 text-center max-w-50 max-h-40 flex flex-col justify-center items-center bg-slate-200 rounded-2xl hover:opacity-90 ">
+                  <div className=" px-3 py-8  text-center max-w-50 max-h-40  flex flex-col justify-center items-center bg-slate-200 rounded-2xl hover:opacity-90 ">
                     <img src="/acimg.png" alt="" className="w-1/2 " />
                     <p>Ac Repair & Service</p>
                   </div>
@@ -27,7 +27,7 @@ const Templete1 = () => {
                 </Link>
               </div>
               {/* {/* washing machine and ro */}
-              <div className=" flex gap-5 justify-center">
+              <div className=" flex gap-5 justify-center max-sm:flex-col items-center">
                 <Link to={`/product/?categery=Washing machine`}>
                   <div className="  px-3 py-4 text-center  max-w-50 flex flex-col justify-center items-center bg-slate-200 rounded-2xl hover:opacity-90 ">
                     <img src="/washinimg.png" alt="" className="w-20 " />
@@ -42,7 +42,7 @@ const Templete1 = () => {
                 </Link>
               </div>
               {/* microwave and chimni */}
-              <div className=" flex gap-5 py-4 justify-center">
+              <div className=" flex gap-5 pb-4 justify-center max-sm:flex-col items-center">
                 <Link to={`/product/?categery=microwave`}>
                   <div className=" px-3 text-center max-w-50 max-h-40 py-4 flex flex-col justify-center items-center bg-slate-200 rounded-2xl hover:opacity-90 ">
                     <img src="/microwaveimg.png" alt="" className="w-45 " />
@@ -59,7 +59,7 @@ const Templete1 = () => {
             </div>
           </div>
         </div>
-        <div className="w-1/2 h-[90vh] border rounded-2xl border-slate-400 flex justify-center items-center">
+        <div className=" h-[90vh] md:block hidden border rounded-2xl border-slate-400 flex justify-center items-center">
           <img
             src="/uctemp1.png"
             alt=""
