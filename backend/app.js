@@ -9,11 +9,7 @@ const Cart = require("./models/Cart");
 const Order = require("./models/Order");
 require('dotenv').config();
 
-app.use(
-  cors({
-    methods: ["GET", "POST", "PUT", "PATHCH", "DELETE"],
-  })
-);
+app.use(cors());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
