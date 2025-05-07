@@ -11,7 +11,7 @@ const Signin = () => {
     try {
       const user = await signInWithGoogle();
       if (user) {
-        let responce = await fetch(`${import.meta.env.VITE_BACKEND_URL}user/check`, {
+        let responce = await fetch(`${import.meta.env.VITE_BACKEND_URL}/user/check`, {
           method: "post",
           headers: {
             "Content-Type": "application/json",

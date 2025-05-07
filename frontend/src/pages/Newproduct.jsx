@@ -20,7 +20,7 @@
     let handleSubmit = async (e) => {
       try {
         e.preventDefault();
-      let responce =  await fetch(`${import.meta.env.VITE_BACKEND_URL}product`, {
+      let responce =  await fetch(`${import.meta.env.VITE_BACKEND_URL}/product`, {
           method: "post",
           headers: {
             "Content-Type": "application/json",

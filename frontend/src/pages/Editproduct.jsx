@@ -14,7 +14,7 @@ const Editproduct = () => {
   }, []);
 
   useEffect(() => {
-    fetch(`${import.meta.env.VITE_BACKEND_URL}product/${id}`)
+    fetch(`${import.meta.env.VITE_BACKEND_URL}/product/${id}`)
       .then((responce) => {
         return responce.json();
       })
@@ -28,7 +28,7 @@ const Editproduct = () => {
   };
   let handleSubmit = async (e) => {
     e.preventDefault();
-    let responce = await fetch(`${import.meta.env.VITE_BACKEND_URL}product/edit/${formdata._id}`, {
+    let responce = await fetch(`${import.meta.env.VITE_BACKEND_URL}/product/edit/${formdata._id}`, {
       method: "put",
       headers: {
         "Content-Type": "application/json",

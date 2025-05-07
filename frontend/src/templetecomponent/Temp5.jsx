@@ -5,7 +5,7 @@ const Temp5 = () => {
   const [arr, setarr] = useState([]);
 
   useEffect(() => {
-    fetch(`${import.meta.env.VITE_BACKEND_URL}`)
+    fetch(`${import.meta.env.VITE_BACKEND_URL}/`)
     .then((responce)=>{
       return responce.json();
     }).then((data)=>{

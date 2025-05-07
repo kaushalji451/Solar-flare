@@ -12,7 +12,7 @@ const navigate = useNavigate();
  // getting user 
   useEffect(() => {
     if(user){
-     fetch(`${import.meta.env.VITE_BACKEND_URL}user?email=${user.email}`)
+     fetch(`${import.meta.env.VITE_BACKEND_URL}/user?email=${user.email}`)
      .then((responce) => {
        return responce.json();
      })
@@ -36,7 +36,7 @@ const navigate = useNavigate();
 
  //order for that  
  let OrdersCalling =async(response)=>{
-  let responce = await fetch(`${import.meta.env.VITE_BACKEND_URL}orders?userId=${aruser._id}`);
+  let responce = await fetch(`${import.meta.env.VITE_BACKEND_URL}/orders?userId=${aruser._id}`);
   let result = await responce.json();
   console.log("this is your result ",result);
   navigate("/orders",{state : { 

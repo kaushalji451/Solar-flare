@@ -14,7 +14,7 @@ const Checkout = () => {
   let amountWithTax = Number((totalnewPrice / 15).toFixed(0));
   let totalAmount = totalnewPrice + amountWithTax;  
   useEffect(() => {
-    fetch(`${import.meta.env.VITE_BACKEND_URL}cart/${id}`)
+    fetch(`${import.meta.env.VITE_BACKEND_URL}/cart/${id}`)
       .then((responce) => {
         return responce.json();
       })
@@ -25,7 +25,7 @@ const Checkout = () => {
 
   // cart item delete
   let handleDelete = async (id) => {
-    let responce = await fetch(`${import.meta.env.VITE_BACKEND_URL}cart/${id}`, {
+    let responce = await fetch(`${import.meta.env.VITE_BACKEND_URL}/cart/${id}`, {
       method: "DELETE",
     });
     let result = await responce.json();

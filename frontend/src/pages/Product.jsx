@@ -21,7 +21,7 @@ const Product = () => {
 
   // gettting data
   useEffect(() => {
-    fetch(`${import.meta.env.VITE_BACKEND_URL}`)
+    fetch(`${import.meta.env.VITE_BACKEND_URL}/`)
       .then((responce) => {
         return responce.json();
       })
@@ -34,7 +34,7 @@ const Product = () => {
   // getting user 
   useEffect(() => {
     if(user){
-     fetch(`${import.meta.env.VITE_BACKEND_URL}user?email=${user.email}`)
+     fetch(`${import.meta.env.VITE_BACKEND_URL}/user?email=${user.email}`)
      .then((responce) => {
        return responce.json();
      })
@@ -47,7 +47,7 @@ const Product = () => {
 
   // add to cart
   let handleClick = async (id) => {
-    let responce = await fetch(`${import.meta.env.VITE_BACKEND_URL}product/cart/${id}`, {
+    let responce = await fetch(`${import.meta.env.VITE_BACKEND_URL}/product/cart/${id}`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -64,7 +64,7 @@ const Product = () => {
   useEffect(() => {
     // cart items
     if(aruser){
-    fetch(`${import.meta.env.VITE_BACKEND_URL}cart/${aruser._id}`)
+    fetch(`${import.meta.env.VITE_BACKEND_URL}/cart/${aruser._id}`)
         .then((responce) => {
           return responce.json();
         })
@@ -80,7 +80,7 @@ const Product = () => {
 
   // cart item delete
   let handleDelete = async (id) => {
-    let responce = await fetch(`${import.meta.env.VITE_BACKEND_URL}cart/${id}`, {
+    let responce = await fetch(`${import.meta.env.VITE_BACKEND_URL}/cart/${id}`, {
       method: "DELETE",
     });
     let result = await responce.json();

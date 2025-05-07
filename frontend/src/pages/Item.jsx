@@ -17,7 +17,7 @@ const Item = () => {
   }, []);
 
   useEffect(() => {
-    fetch(`${import.meta.env.VITE_BACKEND_URL}product/${id}`)
+    fetch(`${import.meta.env.VITE_BACKEND_URL}/product/${id}`)
       .then((responce) => {
         return responce.json();
       })
@@ -27,7 +27,7 @@ const Item = () => {
   }, [id]);
 
   let handleclick = async () => {
-    let responce = await fetch(`${import.meta.env.VITE_BACKEND_URL}product/${arr._id}`, {
+    let responce = await fetch(`${import.meta.env.VITE_BACKEND_URL}/product/${arr._id}`, {
       method: "DELETE",
     });
     let result = await responce.json();
@@ -38,7 +38,7 @@ const Item = () => {
   
   useEffect(() => {
     if(user?.email){
-      fetch(`${import.meta.env.VITE_BACKEND_URL}user?email=${user.email}`)
+      fetch(`${import.meta.env.VITE_BACKEND_URL}/user?email=${user.email}`)
       .then((responce) => {
         return responce.json();
       })
@@ -51,7 +51,7 @@ const Item = () => {
 
   useEffect(() => {
     if(user?.email){
-    fetch(`${import.meta.env.VITE_BACKEND_URL}isowner?email=${user.email}`)
+    fetch(`${import.meta.env.VITE_BACKEND_URL}/isowner?email=${user.email}`)
     .then((responce)=>{
       return responce.json();
     })
