@@ -6,7 +6,7 @@ const Navbar = () => {
   const { user } = useContext(AuthContext);
   const [arruser, setarruser] = useState(null);
   const [owner, setowner] = useState("false");
-
+  console.log(arruser);
   useEffect(() => {
     let checkuser = async () => {
       if (user) {
@@ -37,7 +37,6 @@ const Navbar = () => {
     };
     checkuser();
   }, [user]);
-
   return (
     //  <h1>hello</h1>
     <>
@@ -71,7 +70,7 @@ const Navbar = () => {
         <div className="flex gap-20 min-md:pe-10 pe-4">
           <div className="flex gap-4 items-center justify-center">
             {/* shoping cart */}
-            {arruser && (
+            {arruser === null || arruser.length > 0 && (
               <Link to={`/checkout?id=${arruser[0]._id}`}>
                 <lord-icon
                   src="https://cdn.lordicon.com/pbrgppbb.json"
@@ -103,8 +102,7 @@ const Navbar = () => {
                 aria-labelledby="dropdownHoverButton"
               >
                 <li className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white ">
-                  {/* dsfdsfdfdgfgggggggggggggg */}
-                  {user && arruser != null && arruser[0].name}
+                  {user &&  arruser != null && arruser.length > 0  && arruser[0].name}
                 </li>
 
                 <li>
