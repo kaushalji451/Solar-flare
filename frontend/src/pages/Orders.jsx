@@ -29,7 +29,9 @@ const Orders = () => {
 
   // Handle order save and fetch user's orders
   useEffect(() => {
-    const isSameOrder = JSON.stringify(lastPostedRef.current) === JSON.stringify({ order, response });
+    const isSameOrder =
+      JSON.stringify(lastPostedRef.current) ===
+      JSON.stringify({ order, response });
 
     if (order != undefined && response != undefined) {
       lastPostedRef.current = { order, response };
@@ -99,7 +101,7 @@ const Orders = () => {
                   className="flex border-b border-t mx-2 bg-white border-slate-300 justify-around items-center py-2 mt-2 cursor-pointer"
                   onClick={() => handleClick(data)}
                 >
-                  <img src={data.item[0].image} alt="" className="w-25 h-25" />
+                  <img src={data.item[0].image} alt="" className="w-25 h-25 rounded-xl" />
                   <p>Budget Services </p>
 
                   <div>
@@ -128,10 +130,10 @@ const Orders = () => {
                 {oneorder != null &&
                   oneorder.item.map((data) => (
                     <div
-                      className="flex border-b border-t mx-2 bg-white border-slate-300 justify-between items-center py-2 mt-2 px-10 cursor-pointer"
+                      className="flex border-b border-t mx-2 bg-white border-slate-300 justify-between items-center py-2 mt-2 px-5 cursor-pointer gap-2"
                       onClick={() => handleClickItem(data._id)}
                     >
-                      <img src={data.image} alt="" className="w-25 h-25" />
+                      <img src={data.image} alt="" className="w-25 h-25 rounded-xl" />
                       <p className="w-2/3">{data.title} </p>
                     </div>
                   ))}

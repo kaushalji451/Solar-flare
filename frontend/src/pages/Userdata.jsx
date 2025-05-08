@@ -67,8 +67,8 @@ const Userdata = () => {
         theme="light"
         transition={Bounce}
       />
-      <div className="flex justify-center items-center h-screen">
-        <div className="border py-4 border-slate-300 rounded-2xl shadow-2xl shadow-slate-500 w-1/2 ">
+      <div className="flex justify-center items-center h-screen pt-10">
+        <div className="border py-4 border-slate-300 rounded-2xl shadow-2xl shadow-slate-500 min-lg:w-1/2 w-2/3 max-sm:w-full ">
           <h1 className="font-bold text-3xl text-center pt-2 ps-10">
             Tell more about you
           </h1>
@@ -89,7 +89,7 @@ const Userdata = () => {
                 onChange={handleChange}
                 required
               />
-              <div className="flex gap-2">
+              <div className="flex gap-2 max-md:flex-col">
                 {/* email  */}
                 <div className="flex flex-col w-full ">
                   <label htmlFor="email" className="font-semibold">
@@ -138,9 +138,9 @@ const Userdata = () => {
                 required
               />
               {/* house name area name */}
-              <div className="flex gap-2">
+              <div className="flex gap-2 max-md:flex-col">
                 {/* house name  */}
-                <div className="flex flex-col w-1/2 gap-2">
+                <div className="flex flex-col min-md:w-1/2 gap-2">
                   <label htmlFor="house" className="font-semibold">
                     House Name
                   </label>
@@ -154,7 +154,7 @@ const Userdata = () => {
                     required
                   />
                 </div>
-                <div className="flex flex-col w-1/2 gap-2">
+                <div className="flex flex-col min-md:w-1/2 gap-2">
                   {/* area name  */}
                   <label htmlFor="street" className="font-semibold">
                     Street Name
@@ -172,9 +172,9 @@ const Userdata = () => {
               </div>
 
               {/* city state */}
-              <div className="flex gap-2">
+              <div className="flex gap-2 max-md:flex-col">
                 {/* city name  */}
-                <div className="flex flex-col w-1/2 gap-2">
+                <div className="flex flex-col min-md:w-1/2 gap-2">
                   <label htmlFor="city" className="font-semibold">
                     City Name
                   </label>
@@ -188,7 +188,7 @@ const Userdata = () => {
                     required
                   />
                 </div>
-                <div className="flex flex-col w-1/2 gap-2">
+                <div className="flex flex-col min-md:w-1/2 gap-2">
                   {/* state name  */}
                   <label htmlFor="state" className="font-semibold">
                     State
