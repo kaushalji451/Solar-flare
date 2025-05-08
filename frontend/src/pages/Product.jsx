@@ -39,7 +39,6 @@ const Product = () => {
        return responce.json();
      })
      .then((data) => {
-       console.log(data);
        setaruser(data[0]);  
      });
     }

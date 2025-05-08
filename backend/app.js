@@ -78,15 +78,17 @@ app.post("/product/review/:id", async (req, res) => {
 
 // user post request 
 app.post("/user",async(req,res)=>{
+  console.log(req.body);
   let check = await User.find({email : req.body.email});
-  if(!check ){
+  console.log("this is check ",check);
+  if(!check.length>0 ){
     let newuser = new User(req.body);
     let data = await newuser.save();
       if(data){
+        console.log("this is data",data);
         res.json("user added");
       }
   }else{
-    console.log(check);
     res.json("this user is exist please login");
   }
 })
@@ -95,6 +97,7 @@ app.post("/user",async(req,res)=>{
 app.post("/user/check",async(req,res)=>{
   let {email} = req.body;
   let data = await User.find({email : email});
+    console.log("this is data",data,"this is email",email);
   if(data){
     res.json(data);
   }else{

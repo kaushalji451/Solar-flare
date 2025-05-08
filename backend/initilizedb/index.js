@@ -4,7 +4,7 @@ const initdata = require("./data");
 require('dotenv').config();
 
 
-const MONGO_URL = "mongodb+srv://abhishekkaushal2526:eyAs707z6oD4ZVD5@cluster0.h9hvj.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0";
+const MONGO_URL = "mongodb+srv://abhishekkaushal2526:bDfdkRsBEOloPZ4c@urboncompany.gjaquql.mongodb.net/?retryWrites=true&w=majority&appName=urbonCompany";
 main()
   .then(() => {
     console.log("connected to DB");

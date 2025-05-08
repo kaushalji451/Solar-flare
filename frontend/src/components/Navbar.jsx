@@ -6,39 +6,34 @@ const Navbar = () => {
   const { user } = useContext(AuthContext);
   const [arruser, setarruser] = useState(null);
   const [owner, setowner] = useState("false");
-  console.log(arruser);
   useEffect(() => {
-    let checkuser = async () => {
+    const checkUser = async () => {
       if (user) {
-        let responce = await fetch(`${import.meta.env.VITE_BACKEND_URL}/user/check`, {
-          method: "post",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify(user),
-        });
-        let result = await responce.json();
-        setarruser(result);
-      }
-      // is owner check
-      if (user?.email) {
-        fetch(`${import.meta.env.VITE_BACKEND_URL}/isowner?email=${user.email}`)
-          .then((responce) => {
-            return responce.json();
-          })
-          .then((data) => {
-            if (data == "this is owner") {
-              setowner("true");
-            } else {
-              setowner(false);
-            }
+        try {
+          // Check if user exists in DB
+          const res = await fetch(`${import.meta.env.VITE_BACKEND_URL}/user/check`, {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(user),
           });
+          const result = await res.json();
+          setarruser(result || []);
+
+          // Check if user is the owner
+          const ownerRes = await fetch(
+            `${import.meta.env.VITE_BACKEND_URL}/isowner?email=${user.email}`
+          );
+          const ownerData = await ownerRes.text();
+          setowner(ownerData === "this is owner");
+        } catch (error) {
+          console.error("Error in Navbar useEffect:", error);
+        }
       }
     };
-    checkuser();
+
+    checkUser();
   }, [user]);
   return (
-    //  <h1>hello</h1>
     <>
       <nav className="border-b z-50 border-slate-300 h-16 fixed w-full bg-white flex justify-between items-center min-md:px-20">
         <div className="flex gap-5">

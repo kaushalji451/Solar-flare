@@ -17,7 +17,6 @@ const navigate = useNavigate();
        return responce.json();
      })
      .then((data) => {
-       console.log(data);
        setaruser(data[0]);  
      });
     }
@@ -38,7 +37,6 @@ const navigate = useNavigate();
  let OrdersCalling =async(response)=>{
   let responce = await fetch(`${import.meta.env.VITE_BACKEND_URL}/orders?userId=${aruser._id}`);
   let result = await responce.json();
-  console.log("this is your result ",result);
   navigate("/orders",{state : { 
     order: result,
     response: response
@@ -65,7 +63,6 @@ const navigate = useNavigate();
       handler: function (response) {
         toast("payment successful"); 
         OrdersCalling(response);
-        console.log("this is respoce",response);
       },
       prefill: {
         name: aruser.name,

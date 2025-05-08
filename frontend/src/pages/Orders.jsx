@@ -86,7 +86,6 @@ const Orders = () => {
     navigate(`/item/?id=${id}`);
   };
 
-  console.log(aruser);
   return (
     <>
       <div className="pt-15 flex justify-center">

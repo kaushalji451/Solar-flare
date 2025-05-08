@@ -15,7 +15,6 @@ const loginUser = async (email, password) => {
       email,
       password
     );
-    console.log("User logged in:", userCredential.user);
   } catch (error) {
     console.error("Login Error:", error.message);
   }
@@ -29,7 +28,6 @@ const signupUser = async (email, password) => {
       email,
       password
     );
-    console.log("User signed up:", userCredential.user);
     return userCredential.user;
   } catch (error) {
     console.error("Signup Error:", error.message);
@@ -42,7 +40,6 @@ const googleProvider = new GoogleAuthProvider();
 const signInWithGoogle = async () => {
   try {
     const result = await signInWithPopup(auth, googleProvider);
-    console.log("Google Sign-In User:", result.user);
     return result.user;
   } catch (error) {
     console.error("Google Sign-In Error:", error.message);
@@ -53,7 +50,6 @@ const signInWithGoogle = async () => {
 const logoutUser = async () => {
   try {
     await signOut(auth);
-    console.log("User logged out");
   } catch (error) {
     console.error("Logout Error:", error.message);
   }
