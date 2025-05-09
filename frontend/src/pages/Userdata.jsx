@@ -82,7 +82,7 @@ const Userdata = () => {
               <input
                 type="text"
                 id="Name"
-                name="Name"
+                name="name"
                 className="bg-white rounded-xl h-10"
                 placeholder="Enter your Name"
                 value={formdata.name}

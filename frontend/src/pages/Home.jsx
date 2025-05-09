@@ -4,11 +4,17 @@ import Templete2 from "../homecomponents/Templete2";
 import Templete3 from "../homecomponents/Templete3";
 import Templete4 from "../homecomponents/Templete4";
 import Templete5 from "../homecomponents/Templete5";
-
+import { useSharedState } from "../components/context/shrareState";
 const Home = () => {
+  const {dropdown,setdropdown} = useSharedState();
+  let handleClick = ()=>{
+    if(dropdown === true){
+      setdropdown(false);
+    }
+  }
   return (
     <>
-      <div className="pt-18 pb-18">
+      <div className="pt-18 pb-18" onClick={handleClick}>
         {/* home 1 template */}
         <Templete1></Templete1>
         {/* home 2 template cursole 1 */}

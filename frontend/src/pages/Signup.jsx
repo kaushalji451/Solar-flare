@@ -1,16 +1,25 @@
 import React from "react";
 import { Link,useNavigate } from "react-router-dom";
-import { signInWithGoogle,loginUser } from "../firebase/authService";
+import { signInWithGoogle,signupUser } from "../firebase/authService";
+import { useState } from "react";
 const Signup = () => {
   const navigate = useNavigate();
-
   const handleGoogleSignIn = async () => {
     const user = await signInWithGoogle();
     if (user) {
       navigate("/user");
     }
   };
+  const [Email, setEmail] = useState("");
+  const [Password, setPassword] = useState("");
 
+  let handleSignup = async(e)=>{
+    e.preventDefault();
+    let user =await signupUser(Email,Password);
+      if (user) {
+      navigate("/user");
+    }
+  }
   return (
     <>
      <div className="flex min-md:gap-0 gap-14 pt-15">
@@ -22,7 +31,7 @@ const Signup = () => {
                   Create your new Account
                 </p>
                 <div className="min-md:pt-8">
-                  <form className="max-w-sm mx-auto">
+                  <form className="max-w-sm mx-auto"  onSubmit={handleSignup}>
                     <div className="mb-2 px-2">
                       <label
                         htmlFor="email"
@@ -35,6 +44,7 @@ const Signup = () => {
                         id="email"
                         className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-white dark:border-gray-600 dark:placeholder-gray-400 dark:text-black dark:focus:ring-blue-500 dark:focus:border-blue-500"
                         placeholder="name@gmail.com"
+                        value={Email}
                         onChange={(e) => setEmail(e.target.value)}
                         required
                       />
@@ -51,6 +61,7 @@ const Signup = () => {
                         id="password"
                         className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-white dark:border-gray-600 dark:placeholder-gray-400 dark:text-black dark:focus:ring-blue-500 dark:focus:border-blue-500"
                         placeholder="12345678"
+                        value={Password}
                         onChange={(e) => setPassword(e.target.value)}
                         required
                       />

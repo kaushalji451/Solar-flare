@@ -2,6 +2,7 @@ import React, { useContext, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../firebase/authContext";
 import { logoutUser } from "../firebase/authService";
+import { useSharedState } from "./context/shrareState";
 const Navbar = () => {
   const { user } = useContext(AuthContext);
   const [arruser, setarruser] = useState(null);
@@ -33,6 +34,16 @@ const Navbar = () => {
 
     checkUser();
   }, [user]);
+
+  // const [drop, setdrop] = useState(false);
+  const {dropdown,setdropdown} = useSharedState();
+  let handleDropDown = ()=>{
+    if(dropdown === false){
+      setdropdown(true);
+    }else{
+      setdropdown(false);
+    }
+  }
   return (
     <>
       <nav className="border-b z-50 border-slate-300 h-16 fixed w-full bg-white flex justify-between items-center min-md:px-20">
@@ -74,12 +85,11 @@ const Navbar = () => {
               </Link>
             )}
             {/* user  */}
-            <button
-              id="dropdownHoverButton"
-              data-dropdown-toggle="dropdownHover"
-              data-dropdown-trigger="hover"
-              type="button"
-            >
+
+
+
+           <div className="flex flex-col ">
+             <button onClick={handleDropDown}>
               {/* user logo */}
               <lord-icon
                 src="https://cdn.lordicon.com/hrjifpbq.json"
@@ -88,48 +98,51 @@ const Navbar = () => {
             </button>
 
             {/* <!-- Dropdown menu --> */}
-            <div
-              id="dropdownHover"
-              className="z-10 hidden bg-white divide-y divide-gray-100 rounded-lg shadow-sm w-44 dark:bg-gray-700"
-            >
+            {dropdown === true && <div className="absolute mt-8 max-md:-ms-30 -ms-10   bg-slate-200 rounded-md border border-slate-500 w-40">
               <ul
-                className="py-2 text-sm text-gray-700 dark:text-gray-200"
-                aria-labelledby="dropdownHoverButton"
               >
-                <li className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white ">
+                <li className="border-b w-full px-4 rounded-md border-slate-600 ">
                   {user &&  arruser != null && arruser.length > 0  && arruser[0].name}
                 </li>
 
-                <li>
+                <li className="border-b w-full px-4 rounded-md border-slate-600 ">
                   <Link
                     to="#"
-                    className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
+                    className=""
                   >
                     Dashboard
                   </Link>
                 </li>
+                <li className="border-b w-full px-4 rounded-md border-slate-600 ">
+                  <Link
+                    to="/orders"
+                    className=""
+                  >
+                    Orders
+                  </Link>
+                </li>
                <li>
                {owner == "true" && user && (
-              <Link to="/newproduct">
-                <p className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Create new product</p>
+              <Link to="/newproduct"  className="border-b w-full px-4 rounded-md border-slate-600 ">
+                <p className="">Create new product</p>
               </Link>
             )}
                </li>
 
                 {!user && (
                   <div>
-                    <li>
+                    <li className="border-b w-full px-4 rounded-md border-slate-600 ">
                       <Link
                         to="/signin"
-                        className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
+                        className=""
                       >
                         Login
                       </Link>
                     </li>
-                    <li>
+                    <li  className=" w-full px-4 rounded-md  ">
                       <Link
                         to="/signup"
-                        className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
+                        className=""
                       >
                         Signup
                       </Link>
@@ -138,9 +151,9 @@ const Navbar = () => {
                 )}
                 {/* signout */}
                 {user && (
-                  <li>
+                  <li  className=" w-full px-4 rounded-md  ">
                     <button
-                      className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
+                      className=""
                       onClick={logoutUser}
                     >
                       Sign out
@@ -148,7 +161,8 @@ const Navbar = () => {
                   </li>
                 )}
               </ul>
-            </div>
+            </div>}
+           </div>
           </div>
         </div>
       </nav>
